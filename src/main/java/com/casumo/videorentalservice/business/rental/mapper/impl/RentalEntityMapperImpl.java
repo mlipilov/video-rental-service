@@ -53,8 +53,7 @@ public class RentalEntityMapperImpl implements RentalEntityMapper {
 
     final GetRentalInfoRs rentalInfoRs = new GetRentalInfoRs();
     rentalInfoRs.setMovieId(movie.getId());
-    //change to the display name
-    rentalInfoRs.setMovieType(movie.getMovieType().name());
+    rentalInfoRs.setMovieType(movie.getMovieType().getDisplayName());
     rentalInfoRs.setMovieTitle(movie.getMovieTitle());
     rentalInfoRs.setRentalDays(rentalEntity.getRentalDays());
     rentalInfoRs.setRentedAt(rentalEntity.getRentedAt());

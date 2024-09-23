@@ -8,9 +8,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum MovieType {
 
-  NEW(BigDecimal.valueOf(40L, 2)),
-  REGULAR(BigDecimal.valueOf(30L, 2)),
-  OLD(BigDecimal.valueOf(30L, 2));
+  NEW(BigDecimal.valueOf(40L, 2), "New Release"),
+  REGULAR(BigDecimal.valueOf(30L, 2), "Regular"),
+  OLD(BigDecimal.valueOf(30L, 2), "Old Release");
 
   private final BigDecimal rentalChargeAmount;
+  private final String displayName;
 }
