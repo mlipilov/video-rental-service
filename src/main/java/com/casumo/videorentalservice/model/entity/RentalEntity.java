@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,9 @@ public class RentalEntity extends IdentifiableEntity {
 
   @Column(name = "rental_days")
   private Integer rentalDays;
+
+  @Column(name = "rental_price", scale = 2)
+  private BigDecimal rentalPrice;
 
   @ManyToOne
   @JoinColumn(name = "customer_id")
