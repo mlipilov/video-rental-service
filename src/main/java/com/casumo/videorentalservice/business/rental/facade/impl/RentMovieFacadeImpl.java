@@ -11,6 +11,7 @@ import com.casumo.videorentalservice.model.response.MovieRentedRs;
 import java.util.List;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @Facade
 @RequiredArgsConstructor
@@ -21,6 +22,7 @@ public class RentMovieFacadeImpl implements RentMovieFacade {
   private final RentalEntityMapper rentalEntityMapper;
 
   @Override
+  @Transactional
   public MovieRentedRs rentMovies(final List<RentMovieRq> rentalRequests) {
     rentMovieRqValidator.validate(rentalRequests);
     final Set<RentalEntity> rentals = rentalService.createRental(rentalRequests);

@@ -13,3 +13,8 @@ services:
     volumes:
       - db_video_rental_service:/var/lib/postgresql/data
     restart: unless-stopped
+
+#Named volumes
+volumes:
+  db_video_rental_service:
+    driver: local

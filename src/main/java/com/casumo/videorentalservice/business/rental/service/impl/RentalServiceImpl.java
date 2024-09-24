@@ -5,7 +5,6 @@ import static com.casumo.videorentalservice.common.constant.MdcKeyConstants.USER
 import com.casumo.videorentalservice.business.rental.mapper.RentalEntityMapper;
 import com.casumo.videorentalservice.business.rental.service.MovieRentalPriceCalculator;
 import com.casumo.videorentalservice.business.rental.service.RentalService;
-import com.casumo.videorentalservice.business.rental.validator.CustomerBalanceValidator;
 import com.casumo.videorentalservice.model.entity.CustomerEntity;
 import com.casumo.videorentalservice.model.entity.MovieEntity;
 import com.casumo.videorentalservice.model.entity.RentalEntity;
@@ -49,10 +48,11 @@ public class RentalServiceImpl implements RentalService {
 
     //pay and rent
     movies.forEach(movie -> {
-      final BigDecimal rentalPrice = movieRentalPriceCalculator.calculate(movie);
+      final Integer rentalDays = movieIdToRentalDaysMap.get(movie.getId());
+
+      final BigDecimal rentalPrice = movieRentalPriceCalculator.calculate(movie, rentalDays);
       customer.payForMovieRent(rentalPrice);
 
-      final Integer rentalDays = movieIdToRentalDaysMap.get(movie.getId());
       final RentalEntity rental = rentalEntityMapper.toRental(movie, rentalDays, rentalPrice);
       customer.addRental(rental);
     });

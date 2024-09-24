@@ -1,5 +1,6 @@
 package com.casumo.videorentalservice.model.response;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import lombok.Data;
 
@@ -11,4 +12,5 @@ public class GetRentalInfoRs {
   private String movieType;
   private Integer rentalDays;
   private LocalDate rentedAt;
+  private BigDecimal rentalPrice;
 }

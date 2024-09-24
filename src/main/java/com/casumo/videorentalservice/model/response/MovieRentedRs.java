@@ -7,6 +7,6 @@ import lombok.Data;
 @Data
 public class MovieRentedRs {
 
-  private List<GetRentalInfoRs> getRentalInfoRs;
+  private List<GetRentalInfoRs> rentalInfo;
   private BigDecimal rentalPrice;
 }

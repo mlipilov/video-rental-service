@@ -1,5 +1,7 @@
 package com.casumo.videorentalservice.model.entity;
 
+import static jakarta.persistence.CascadeType.MERGE;
+import static jakarta.persistence.CascadeType.PERSIST;
 import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ZERO;
 
 import jakarta.persistence.Column;
@@ -28,7 +30,7 @@ public class CustomerEntity extends IdentifiableEntity {
   @Column(name = "balance", nullable = false, scale = 2)
   private BigDecimal balance;
 
-  @OneToMany(mappedBy = "customer")
+  @OneToMany(mappedBy = "customer", cascade = {PERSIST, MERGE})
   private Set<RentalEntity> rentals = new HashSet<>();
 
   public void addRental(@NonNull final RentalEntity rental) {

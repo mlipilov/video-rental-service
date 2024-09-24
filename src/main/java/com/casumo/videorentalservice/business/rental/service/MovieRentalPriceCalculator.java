@@ -8,8 +8,9 @@ public interface MovieRentalPriceCalculator {
   /**
    * Calculates the total rental price for a list of movies.
    *
-   * @param movie a list of MovieEntity objects representing the movies to be rented
+   * @param movie      a list of MovieEntity objects representing the movies to be rented
+   * @param rentalDays
    * @return a BigDecimal representing the total rental price for the provided list of movies
    */
-  BigDecimal calculate(MovieEntity movie);
+  BigDecimal calculate(MovieEntity movie, Integer rentalDays);
 }

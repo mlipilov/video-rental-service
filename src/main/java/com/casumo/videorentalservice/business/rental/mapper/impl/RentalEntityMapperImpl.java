@@ -38,7 +38,7 @@ public class RentalEntityMapperImpl implements RentalEntityMapper {
         .orElse(null);
     rs.setRentalPrice(totalRentalPrice);
 
-    rs.setGetRentalInfoRs(toGetRentalInfoRs(rentals));
+    rs.setRentalInfo(toGetRentalInfoRs(rentals));
     return rs;
   }
 
@@ -57,6 +57,7 @@ public class RentalEntityMapperImpl implements RentalEntityMapper {
     rentalInfoRs.setMovieTitle(movie.getMovieTitle());
     rentalInfoRs.setRentalDays(rentalEntity.getRentalDays());
     rentalInfoRs.setRentedAt(rentalEntity.getRentedAt());
+    rentalInfoRs.setRentalPrice(rentalEntity.getRentalPrice());
 
     return rentalInfoRs;
   }
