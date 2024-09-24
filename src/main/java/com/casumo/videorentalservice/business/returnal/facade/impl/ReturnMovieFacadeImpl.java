@@ -10,6 +10,7 @@ import com.casumo.videorentalservice.model.entity.RentalEntity;
 import com.casumo.videorentalservice.model.response.MovieReturnedRs;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,8 +30,12 @@ public class ReturnMovieFacadeImpl implements ReturnMovieFacade {
     log.info("Started returning movies...");
     final CustomerEntity currentCustomer = customerService.getCurrentCustomer();
     final Set<RentalEntity> rentals = currentCustomer.getRentals();
+    final Set<RentalEntity> rentalsToReturn = rentals.stream()
+        .filter(rental -> returnRq.contains(rental.getMovie().getId()))
+        .collect(Collectors.toSet());
+
     final Set<RentalEntity> returnedRentals = movieReturnService.returnMovies(
-        rentals,
+        rentalsToReturn,
         currentCustomer);
     return rentalEntityMapper.toMovieReturnedRs(returnedRentals);
   }

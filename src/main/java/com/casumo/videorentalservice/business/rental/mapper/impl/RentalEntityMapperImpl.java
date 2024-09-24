@@ -10,6 +10,7 @@ import com.casumo.videorentalservice.model.response.MovieReturnedRs;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import org.springframework.stereotype.Component;
 
@@ -35,6 +36,7 @@ public class RentalEntityMapperImpl implements RentalEntityMapper {
     final MovieRentedRs rs = new MovieRentedRs();
 
     final BigDecimal totalRentalPrice = rentals.stream()
+        .filter(rental -> !rental.isReturned())
         .map(RentalEntity::getRentalPrice)
         .reduce(BigDecimal::add)
         .orElse(null);
@@ -49,7 +51,9 @@ public class RentalEntityMapperImpl implements RentalEntityMapper {
     final MovieReturnedRs rs = new MovieReturnedRs();
 
     final BigDecimal totalLateCharge = returnedRentals.stream()
+        .filter(RentalEntity::isReturned)
         .map(RentalEntity::getExtraFee)
+        .filter(Objects::nonNull)
         .reduce(BigDecimal::add)
         .orElse(null);
     rs.setTotalLateCharge(totalLateCharge);
@@ -60,6 +64,7 @@ public class RentalEntityMapperImpl implements RentalEntityMapper {
 
   private List<GetReturnInfoRs> toGetReturnInfoRs(final Set<RentalEntity> returnedRentals) {
     return returnedRentals.stream()
+        .filter(RentalEntity::isReturned)
         .map(this::toGetReturnInfoRsItem)
         .toList();
   }
@@ -81,6 +86,7 @@ public class RentalEntityMapperImpl implements RentalEntityMapper {
 
   private List<GetRentalInfoRs> toGetRentalInfoRs(final Set<RentalEntity> rentals) {
     return rentals.stream()
+        .filter(rental -> !rental.isReturned())
         .map(this::toGetRentalInfoRsItem)
         .toList();
   }

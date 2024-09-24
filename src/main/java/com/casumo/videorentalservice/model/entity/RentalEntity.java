@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.proxy.HibernateProxy;
 
 @Getter
 @Setter
@@ -41,16 +42,28 @@ public class RentalEntity extends IdentifiableEntity {
   private MovieEntity movie;
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(final Object o) {
     if (this == o) {
       return true;
     }
-    if (o == null || getClass() != o.getClass()) {
+    if (o == null) {
+      return false;
+    }
+
+    final Class<?> oEffectiveClass = o instanceof HibernateProxy
+        ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass()
+        : o.getClass();
+    final Class<?> thisEffectiveClass = this instanceof HibernateProxy
+        ? ((HibernateProxy) this).getHibernateLazyInitializer()
+        .getPersistentClass() : this.getClass();
+
+    if (thisEffectiveClass != oEffectiveClass) {
       return false;
     }
 
     final RentalEntity that = (RentalEntity) o;
-    return Objects.equals(customer, that.customer)
+    return Objects.equals(getRentalDays(), that.rentalDays)
+        && Objects.equals(customer, that.customer)
         && Objects.equals(movie, that.movie);
   }
 

@@ -14,6 +14,7 @@ import java.util.stream.LongStream;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
 public class MovieReturnServiceImpl implements MovieReturnService {
 
   @Override
+  @Transactional
   public Set<RentalEntity> returnMovies(
       final Set<RentalEntity> rentals,
       final CustomerEntity currentCustomer
