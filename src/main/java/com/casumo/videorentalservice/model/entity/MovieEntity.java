@@ -18,11 +18,11 @@ import org.hibernate.proxy.HibernateProxy;
 @Table(name = "movies")
 public class MovieEntity extends IdentifiableEntity {
 
-  @Column(name = "movie_title")
+  @Column(name = "movie_title", unique = true, nullable = false)
   private String movieTitle;
 
   @Enumerated(STRING)
-  @Column(name = "movie_type")
+  @Column(name = "movie_type", nullable = false)
   private MovieType movieType;
 
   @Override

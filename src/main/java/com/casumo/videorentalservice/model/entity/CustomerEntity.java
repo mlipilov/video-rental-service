@@ -23,10 +23,10 @@ import org.hibernate.proxy.HibernateProxy;
 @Table(name = "customers")
 public class CustomerEntity extends IdentifiableEntity {
 
-  @Column(name = "identity_provider_id")
+  @Column(name = "identity_provider_id", nullable = false)
   private String identityProviderId;
 
-  @Column(name = "full_name")
+  @Column(name = "full_name", nullable = false)
   private String fullName;
 
   @Column(name = "balance", nullable = false, scale = 2)
