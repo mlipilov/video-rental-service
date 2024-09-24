@@ -89,6 +89,13 @@ databaseChangeLog:
               - column:
                   name: rented_at
                   type: date
+              - column:
+                  name: extra_fee
+                  type: decimal
+              - column:
+                  name: is_returned
+                  type: boolean
+                  defaultValueBoolean: false
 
   - changeSet:
       id: 0.1.0-4 loaded data to the movies table

@@ -2,8 +2,8 @@ package com.casumo.videorentalservice.business.rental.service.impl;
 
 import com.casumo.videorentalservice.business.rental.service.CustomerService;
 import com.casumo.videorentalservice.business.rental.service.MovieService;
-import com.casumo.videorentalservice.business.rental.service.RentalCheckoutService;
-import com.casumo.videorentalservice.business.rental.service.RentalService;
+import com.casumo.videorentalservice.business.rental.service.MovieRentalCheckoutService;
+import com.casumo.videorentalservice.business.rental.service.MovieRentalService;
 import com.casumo.videorentalservice.model.entity.CustomerEntity;
 import com.casumo.videorentalservice.model.entity.MovieEntity;
 import com.casumo.videorentalservice.model.entity.RentalEntity;
@@ -19,11 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class RentalServiceImpl implements RentalService {
+public class MovieRentalServiceImpl implements MovieRentalService {
 
   private final CustomerService customerService;
   private final MovieService movieService;
-  private final RentalCheckoutService rentalCheckoutService;
+  private final MovieRentalCheckoutService movieRentalCheckoutService;
 
   @Override
   @Transactional
@@ -34,7 +34,7 @@ public class RentalServiceImpl implements RentalService {
     //get movies to rental days map
     final Map<MovieEntity, Integer> moviesMap = movieService.getMoviesForRental(rentalRequests);
     //pay and rent
-    rentalCheckoutService.payAndRent(moviesMap, customer);
+    movieRentalCheckoutService.payAndRent(moviesMap, customer);
     //return rentals
     return customer.getRentals();
   }

@@ -26,6 +26,12 @@ public class RentalEntity extends IdentifiableEntity {
   @Column(name = "rental_price", scale = 2)
   private BigDecimal rentalPrice;
 
+  @Column(name = "is_returned")
+  private boolean isReturned;
+
+  @Column(name = "extra_fee", scale = 2)
+  private BigDecimal extraFee;
+
   @ManyToOne
   @JoinColumn(name = "customer_id")
   private CustomerEntity customer;

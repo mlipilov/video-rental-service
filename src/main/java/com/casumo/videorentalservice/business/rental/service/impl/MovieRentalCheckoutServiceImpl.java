@@ -2,7 +2,7 @@ package com.casumo.videorentalservice.business.rental.service.impl;
 
 import com.casumo.videorentalservice.business.rental.mapper.RentalEntityMapper;
 import com.casumo.videorentalservice.business.rental.service.MovieRentalPriceCalculator;
-import com.casumo.videorentalservice.business.rental.service.RentalCheckoutService;
+import com.casumo.videorentalservice.business.rental.service.MovieRentalCheckoutService;
 import com.casumo.videorentalservice.model.entity.CustomerEntity;
 import com.casumo.videorentalservice.model.entity.MovieEntity;
 import com.casumo.videorentalservice.model.entity.RentalEntity;
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class RentalCheckoutServiceImpl implements RentalCheckoutService {
+public class MovieRentalCheckoutServiceImpl implements MovieRentalCheckoutService {
 
   private final RentalEntityMapper rentalEntityMapper;
   private final MovieRentalPriceCalculator movieRentalPriceCalculator;

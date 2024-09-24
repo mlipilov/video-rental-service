@@ -1,6 +1,7 @@
 package com.casumo.videorentalservice.business.rental.service.impl;
 
 import static com.casumo.videorentalservice.model.enumuration.MovieType.NEW;
+import static java.math.BigDecimal.ZERO;
 import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ZERO;
 
 import com.casumo.videorentalservice.business.rental.service.MovieRentalPriceCalculationStrategy;
@@ -17,7 +18,7 @@ public class NewReleaseRentalPriceCalculationStrategyImpl
   public BigDecimal calculate(final MovieEntity movie, final Integer rentalDays) {
     return IntStream.range(INTEGER_ZERO, rentalDays)
         .mapToObj(i -> movie.getMovieType().getRentalChargeAmount())
-        .reduce(BigDecimal.ZERO, BigDecimal::add);
+        .reduce(ZERO, BigDecimal::add);
   }
 
   @Override

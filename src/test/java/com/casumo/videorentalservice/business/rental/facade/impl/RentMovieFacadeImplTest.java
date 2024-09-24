@@ -9,18 +9,16 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.casumo.videorentalservice.business.rental.mapper.RentalEntityMapper;
-import com.casumo.videorentalservice.business.rental.service.RentalService;
+import com.casumo.videorentalservice.business.rental.service.MovieRentalService;
 import com.casumo.videorentalservice.business.rental.validator.RentMovieRqValidator;
 import com.casumo.videorentalservice.model.request.RentMovieRq;
 import com.casumo.videorentalservice.model.response.MovieRentedRs;
 import java.util.HashSet;
 import java.util.List;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,7 +27,7 @@ class RentMovieFacadeImplTest {
   @Mock
   private RentMovieRqValidator rentMovieRqValidator;
   @Mock
-  private RentalService rentalService;
+  private MovieRentalService movieRentalService;
   @Mock
   private RentalEntityMapper rentalEntityMapper;
 
@@ -41,7 +39,7 @@ class RentMovieFacadeImplTest {
     final MovieRentedRs movieRentedRs = new MovieRentedRs();
     movieRentedRs.setRentalInfo(List.of());
 
-    when(rentalService.createRental(anyList())).thenReturn(new HashSet<>());
+    when(movieRentalService.createRental(anyList())).thenReturn(new HashSet<>());
     when(rentalEntityMapper.toMovieRentedRs(anySet())).thenReturn(movieRentedRs);
 
     final MovieRentedRs rs = rentMovieFacade.rentMovies(List.of(new RentMovieRq()));

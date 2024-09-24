@@ -3,6 +3,7 @@ package com.casumo.videorentalservice.business.rental.mapper;
 import com.casumo.videorentalservice.model.entity.MovieEntity;
 import com.casumo.videorentalservice.model.entity.RentalEntity;
 import com.casumo.videorentalservice.model.response.MovieRentedRs;
+import com.casumo.videorentalservice.model.response.MovieReturnedRs;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -26,4 +27,13 @@ public interface RentalEntityMapper {
    * price.
    */
   MovieRentedRs toMovieRentedRs(Set<RentalEntity> rentals);
+
+  /**
+   * Converts a set of returned {@link RentalEntity} objects into a {@link MovieReturnedRs} object.
+   *
+   * @param returnedRentals the set of {@link RentalEntity} objects that have been returned.
+   * @return a {@link MovieReturnedRs} object containing the details of the returned movies and the
+   * total late charge.
+   */
+  MovieReturnedRs toMovieReturnedRs(Set<RentalEntity> returnedRentals);
 }

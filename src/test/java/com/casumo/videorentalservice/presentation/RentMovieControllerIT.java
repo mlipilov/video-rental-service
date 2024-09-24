@@ -2,7 +2,7 @@ package com.casumo.videorentalservice.presentation;
 
 import static com.casumo.videorentalservice.utils.DataReader.readInboundJson;
 import static com.casumo.videorentalservice.utils.DataReader.readOutboundJson;
-import static com.casumo.videorentalservice.utils.RequestUtils.sendPost;
+import static com.casumo.videorentalservice.utils.RequestUtils.sendPatch;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
 
@@ -29,7 +29,7 @@ class RentMovieControllerIT extends BaseIntegrationTest {
     final String expected = readOutboundJson(RENTAL_RS);
 
     queryExecutionListener.initCounter();
-    final ResponseEntity<String> response = sendPost(rt, requestUrl, rq);
+    final ResponseEntity<String> response = sendPatch(rt, requestUrl, rq);
 
     assertThat(response).isNotNull();
     assertThat(response.getStatusCode().is2xxSuccessful()).isTrue();
@@ -37,8 +37,8 @@ class RentMovieControllerIT extends BaseIntegrationTest {
     assertThat(queryExecutionListener.getSelectCount()).isEqualTo(2);
     //rented 2 movies
     assertThat(queryExecutionListener.getInsertCount()).isEqualTo(2);
-    //updated user balance
-    assertThat(queryExecutionListener.getUpdateCount()).isEqualTo(1);
+    //updated user balance, update 2 movies rental count
+    assertThat(queryExecutionListener.getUpdateCount()).isEqualTo(3);
     assertEquals(expected, response.getBody(), false);
   }
 }

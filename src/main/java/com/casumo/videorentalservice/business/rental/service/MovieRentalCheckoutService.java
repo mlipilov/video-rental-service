@@ -4,7 +4,7 @@ import com.casumo.videorentalservice.model.entity.CustomerEntity;
 import com.casumo.videorentalservice.model.entity.MovieEntity;
 import java.util.Map;
 
-public interface RentalCheckoutService {
+public interface MovieRentalCheckoutService {
 
   /**
    * Processes the payment and rental of a list of movies for a given customer.

@@ -63,4 +63,8 @@ public class MovieEntity extends IdentifiableEntity {
   public void decreaseCount() {
     this.count--;
   }
+
+  public void increaseCount() {
+    this.count++;
+  }
 }

@@ -5,7 +5,7 @@ import com.casumo.videorentalservice.model.request.RentMovieRq;
 import java.util.List;
 import java.util.Set;
 
-public interface RentalService {
+public interface MovieRentalService {
 
   /**
    * Creates rental entries based on a list of rental requests.

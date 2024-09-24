@@ -3,6 +3,7 @@ package com.casumo.videorentalservice.utils;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.PATCH;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -29,6 +30,15 @@ public class RequestUtils {
       T body
   ) {
     final RequestEntity<T> re = new RequestEntity<>(body, getAuthHeader(), POST, URI.create(url));
+    return rt.exchange(re, String.class);
+  }
+
+  public static <T> ResponseEntity<String> sendPatch(
+      final RestTemplate rt,
+      final String url,
+      T body
+  ) {
+    final RequestEntity<T> re = new RequestEntity<>(body, getAuthHeader(), PATCH, URI.create(url));
     return rt.exchange(re, String.class);
   }
 
