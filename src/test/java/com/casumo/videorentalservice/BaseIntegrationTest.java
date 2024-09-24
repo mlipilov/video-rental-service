@@ -51,7 +51,7 @@ public class BaseIntegrationTest {
   }
 
   @DynamicPropertySource
-  static void registerDynamicProperties(DynamicPropertyRegistry registry) {
+  static void registerDynamicProperties(final DynamicPropertyRegistry registry) {
     registry.add(DATASOURCE_URL, POSTGRES_SQL_CONTAINER::getJdbcUrl);
     registry.add(DB_USERNAME, POSTGRES_SQL_CONTAINER::getUsername);
     registry.add(DB_PASSWORD, POSTGRES_SQL_CONTAINER::getPassword);
