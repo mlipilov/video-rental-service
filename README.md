@@ -78,7 +78,7 @@ This repository contains the source code for the Video Rental Service applicatio
 ## Using the Program
 
 1. **Rent a Movie**:
-    - Endpoint: `POST /rentals`
+    - Endpoint: `PATCH /rentals`
     - Request Body:
       ```json
       {
@@ -88,7 +88,7 @@ This repository contains the source code for the Video Rental Service applicatio
       ```
 
 2. **Return a Movie**:
-    - Endpoint: `POST /returns`
+    - Endpoint: `PATCH /returns`
     - Request Body:
       ```json
       [12]
