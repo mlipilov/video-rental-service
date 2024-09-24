@@ -1,8 +1,9 @@
-package com.casumo.videorentalservice.business.rental.service;
+package com.casumo.videorentalservice.business.rental.service.impl;
 
 import static com.casumo.videorentalservice.model.enumuration.MovieType.OLD;
 import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ZERO;
 
+import com.casumo.videorentalservice.business.rental.service.MovieRentalPriceCalculationStrategy;
 import com.casumo.videorentalservice.model.entity.MovieEntity;
 import java.math.BigDecimal;
 import java.util.stream.IntStream;

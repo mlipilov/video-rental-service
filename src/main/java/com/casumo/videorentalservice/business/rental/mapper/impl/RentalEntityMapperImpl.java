@@ -36,7 +36,7 @@ public class RentalEntityMapperImpl implements RentalEntityMapper {
         .map(RentalEntity::getRentalPrice)
         .reduce(BigDecimal::add)
         .orElse(null);
-    rs.setRentalPrice(totalRentalPrice);
+    rs.setTotalRentalPrice(totalRentalPrice);
 
     rs.setRentalInfo(toGetRentalInfoRs(rentals));
     return rs;

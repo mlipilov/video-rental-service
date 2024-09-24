@@ -6,11 +6,11 @@ import java.util.List;
 public interface RentMovieRqValidator {
 
   /**
-   * Validates a list of rental requests to ensure they meet the necessary criteria for renting
-   * movies.
+   * Validates the list of rental requests to ensure they meet the necessary criteria.
    *
-   * @param rentalRequests A list of RentMovieRq objects, where each object contains the movie ID
-   *                       and the number of rental days requested for each movie.
+   * @param rentalRequests a list of {@link RentMovieRq} objects that need to be validated. Each
+   *                       {@link RentMovieRq} contains the movie ID and the number of rental days
+   *                       requested.
    */
   void validate(List<RentMovieRq> rentalRequests);
 }

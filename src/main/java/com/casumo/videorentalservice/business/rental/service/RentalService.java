@@ -8,10 +8,11 @@ import java.util.Set;
 public interface RentalService {
 
   /**
-   * Creates rental records based on the provided list of rental requests.
+   * Creates rental entries based on a list of rental requests.
    *
-   * @param rentalRequests A list of RentMovieRq objects, each containing the movie ID and the
-   *                       number of rental days requested.
+   * @param rentalRequests a list of {@link RentMovieRq} objects that specify the movie IDs and the
+   *                       number of rental days for each movie.
+   * @return a set of {@link RentalEntity} objects representing the created rental records.
    */
   Set<RentalEntity> createRental(List<RentMovieRq> rentalRequests);
 }

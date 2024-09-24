@@ -17,7 +17,7 @@ public class RentMovieRqValidatorImpl implements RentMovieRqValidator {
         .anyMatch(rq -> isNull(rq.getRentalDays()) || isNull(rq.getMovieId()));
 
     if (isRqNotValid) {
-      throw new RuntimeException();
+      throw new RuntimeException("Request is not valid!");
     }
   }
 }

@@ -8,5 +8,5 @@ import lombok.Data;
 public class MovieRentedRs {
 
   private List<GetRentalInfoRs> rentalInfo;
-  private BigDecimal rentalPrice;
+  private BigDecimal totalRentalPrice;
 }
