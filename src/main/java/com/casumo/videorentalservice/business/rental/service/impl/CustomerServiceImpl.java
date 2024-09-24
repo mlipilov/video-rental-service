@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -18,6 +19,7 @@ public class CustomerServiceImpl implements CustomerService {
   private final CustomerEntityRepository customerRepository;
 
   @Override
+  @Transactional
   public CustomerEntity getCurrentCustomer() {
     log.info("Started getting current customer...");
     final String userId = MDC.get(USER_ID);

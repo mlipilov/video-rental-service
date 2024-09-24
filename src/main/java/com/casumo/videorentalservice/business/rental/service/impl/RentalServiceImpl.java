@@ -12,9 +12,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class RentalServiceImpl implements RentalService {
@@ -26,6 +28,7 @@ public class RentalServiceImpl implements RentalService {
   @Override
   @Transactional
   public Set<RentalEntity> createRental(final List<RentMovieRq> rentalRequests) {
+    log.info("Started creating rentals...");
     //get current customer
     final CustomerEntity customer = customerService.getCurrentCustomer();
     //get movies to rental days map

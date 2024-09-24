@@ -5,27 +5,25 @@ import com.casumo.videorentalservice.model.entity.RentalEntity;
 import com.casumo.videorentalservice.model.response.MovieRentedRs;
 import java.math.BigDecimal;
 import java.util.Set;
-import org.springframework.http.ResponseEntity;
 
 public interface RentalEntityMapper {
 
   /**
-   * Converts a MovieEntity instance to a RentalEntity instance.
+   * Converts a MovieEntity object into a RentalEntity object with specified rental days and price.
    *
-   * @param movie       The movie entity to be converted.
-   * @param rentalDays  Rental days
-   * @param rentalPrice Price of the rent
-   * @return A new RentalEntity instance based on the given MovieEntity.
+   * @param movie       The MovieEntity object representing the movie to be rented.
+   * @param rentalDays  The number of days the movie is being rented for.
+   * @param rentalPrice The price of renting the movie for the specified number of days.
+   * @return A RentalEntity object containing rental details for the specified movie.
    */
   RentalEntity toRental(MovieEntity movie, Integer rentalDays, BigDecimal rentalPrice);
 
   /**
-   * Converts a set of RentalEntity objects into a ResponseEntity containing a MovieRentedRs
-   * object.
+   * Converts a set of {@link RentalEntity} objects into a {@link MovieRentedRs} object.
    *
-   * @param rentals A set of RentalEntity objects representing movies that have been rented.
-   * @return A ResponseEntity containing a MovieRentedRs object which includes rental information
-   * and the total rental price.
+   * @param rentals the set of {@link RentalEntity} objects representing the rental details.
+   * @return a {@link MovieRentedRs} object containing the rental information and the total rental
+   * price.
    */
   MovieRentedRs toMovieRentedRs(Set<RentalEntity> rentals);
 }

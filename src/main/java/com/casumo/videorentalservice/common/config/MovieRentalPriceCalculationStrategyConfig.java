@@ -13,7 +13,7 @@ public class MovieRentalPriceCalculationStrategyConfig {
 
   @Bean
   @Primary
-  public Map<String, MovieRentalPriceCalculationStrategy> calculationStrategyMap(
+  Map<String, MovieRentalPriceCalculationStrategy> calculationStrategyMap(
       final List<MovieRentalPriceCalculationStrategy> strategies
   ) {
     final Map<String, MovieRentalPriceCalculationStrategy> strategyMap = new HashMap<>();
