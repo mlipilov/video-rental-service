@@ -11,8 +11,10 @@ import com.casumo.videorentalservice.model.response.MovieRentedRs;
 import java.util.List;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 @Facade
 @RequiredArgsConstructor
 public class RentMovieFacadeImpl implements RentMovieFacade {
@@ -26,6 +28,8 @@ public class RentMovieFacadeImpl implements RentMovieFacade {
   public MovieRentedRs rentMovies(final List<RentMovieRq> rentalRequests) {
     rentMovieRqValidator.validate(rentalRequests);
     final Set<RentalEntity> rentals = rentalService.createRental(rentalRequests);
-    return rentalEntityMapper.toMovieRentedRs(rentals);
+    final MovieRentedRs rs = rentalEntityMapper.toMovieRentedRs(rentals);
+    log.info("Successfully rented {} movies", rs.getRentalInfo().size());
+    return rs;
   }
 }
