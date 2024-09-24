@@ -1,3 +1,11 @@
 spring:
   application:
     name: video-rental-service
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.yml
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: postgres
+    username: postgres
+    url: jdbc:postgresql://localhost:10088/video-rental

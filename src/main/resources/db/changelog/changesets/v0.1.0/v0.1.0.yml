@@ -1,0 +1,102 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0.1.0-1 created customers table
+      author: m.lipilov@andersenlab.com
+      changes:
+        - createTable:
+            tableName: customers
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: identity_provider_id
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: full_name
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: decimal
+
+  - changeSet:
+      id: 0.1.0-2 created movies table
+      author: m.lipilov@andersenlab.com
+      changes:
+        - createTable:
+            tableName: movies
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: movie_title
+                  type: varchar
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: movie_type
+                  type: varchar
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 0.1.0-3 created movies table
+      author: m.lipilov@andersenlab.com
+      changes:
+        - createTable:
+            tableName: rentals
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: customer_id
+                  type: bigint
+                  constraints:
+                    references: customers(id)
+                    foreignKeyName: rentals_customers_fk
+                    nullable: false
+              - column:
+                  name: movie_id
+                  type: bigint
+                  constraints:
+                    references: movies(id)
+                    foreignKeyName: rentals_movies_fk
+                    nullable: false
+              - column:
+                  name: rental_price
+                  type: decimal
+              - column:
+                  name: rental_days
+                  type: int
+              - column:
+                  name: rented_at
+                  type: date
+
+  - changeSet:
+      id: 0.1.0-4 loaded data to the movies table
+      author: m.lipilov@andersenlab.com
+      changes:
+        - loadData:
+            tableName: movies
+            file: db/changelog/changesets/v0.1.0/csv/movies-dataset.csv
+
+  - changeSet:
+      id: 0.1.0-5 loaded data to the customers table
+      author: m.lipilov@andersenlab.com
+      changes:
+        - loadData:
+            tableName: customers
+            file: db/changelog/changesets/v0.1.0/csv/customers-dataset.csv
