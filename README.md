@@ -8,8 +8,6 @@
 - [Non-Focus Areas](#non-focus-areas)
 - [How to Run](#how-to-run)
 - [Using the Program](#using-the-program)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -32,13 +30,13 @@ This repository contains the source code for the Video Rental Service applicatio
     - **Spring Boot**: For rapid application development and dependency management.
     - **Spring Data JPA**: To simplify data access and manipulation.
     - **Lombok**: To reduce boilerplate code for model and data classes.
+    - **TestContainers** - to be on the same page with our cloud env
+    - **Junit5** - the most known unit test framework with basically everything we need to write unit tests
 
 2. **Database**:
     - **PostgreSQL**: Chosen as the one of the most popular and reliable DB which is fully satisfies projects needs
 
 3. **Testing**:
-    - TestContainers - to be on the same page with our cloud env
-    - Junit5 - the most known unit test framework with basically everything we need to write unit tests
     - Focused on creating meaningful unit and integration tests to ensure code reliability.
 
 4. **Architecture**:
