@@ -19,7 +19,6 @@
 
   <properties>
     <java.version>17</java.version>
-    <arch.unit.version>1.3.0</arch.unit.version>
   </properties>
 
   <dependencies>
@@ -49,12 +48,6 @@
       <optional>true</optional>
     </dependency>
     <!--Test dependencies-->
-    <dependency>
-      <groupId>com.tngtech.archunit</groupId>
-      <artifactId>archunit-junit5</artifactId>
-      <version>${arch.unit.version}</version>
-      <scope>test</scope>
-    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
