@@ -11,6 +11,7 @@ import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -21,6 +22,7 @@ public class RentalCheckoutServiceImpl implements RentalCheckoutService {
   private final MovieRentalPriceCalculator movieRentalPriceCalculator;
 
   @Override
+  @Transactional
   public void payAndRent(
       final Map<MovieEntity, Integer> moviesMap,
       final CustomerEntity customer

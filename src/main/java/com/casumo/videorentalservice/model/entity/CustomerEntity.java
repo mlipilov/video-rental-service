@@ -6,6 +6,8 @@ import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ZERO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.NamedAttributeNode;
+import jakarta.persistence.NamedEntityGraph;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
@@ -15,12 +17,17 @@ import java.util.Set;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.proxy.HibernateProxy;
+
 
 @Getter
 @Setter
 @Entity
 @Table(name = "customers")
+@NamedEntityGraph(
+    name = "rentals",
+    attributeNodes = @NamedAttributeNode(value = "rentals"))
 public class CustomerEntity extends IdentifiableEntity {
 
   @Column(name = "identity_provider_id", nullable = false)
@@ -33,6 +40,7 @@ public class CustomerEntity extends IdentifiableEntity {
   private BigDecimal balance;
 
   @OneToMany(mappedBy = "customer", cascade = {PERSIST, MERGE})
+  @BatchSize(size = 200)
   private Set<RentalEntity> rentals = new HashSet<>();
 
   public void addRental(@NonNull final RentalEntity rental) {

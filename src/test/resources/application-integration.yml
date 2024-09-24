@@ -3,3 +3,5 @@ spring:
     password: ${DB_PASSWORD}
     username: ${DB_USERNAME}
     url: ${DATASOURCE_URL}
+  jpa:
+    show-sql: true

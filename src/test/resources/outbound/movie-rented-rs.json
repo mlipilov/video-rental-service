@@ -1,0 +1,21 @@
+{
+  "rentalInfo": [
+    {
+      "movieId": 5,
+      "movieTitle": "Fight Club",
+      "movieType": "Old Release",
+      "rentalDays": 2,
+      "rentedAt": "2024-09-24",
+      "rentalPrice": 30.00
+    },
+    {
+      "movieId": 6,
+      "movieTitle": "Pulp Fiction",
+      "movieType": "Old Release",
+      "rentalDays": 2,
+      "rentedAt": "2024-09-24",
+      "rentalPrice": 30.00
+    }
+  ],
+  "totalRentalPrice": 60.00
+}

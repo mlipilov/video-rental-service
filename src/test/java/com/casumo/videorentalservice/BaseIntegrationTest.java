@@ -11,12 +11,14 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.jdbc.SqlMergeMode;
+import org.springframework.web.client.RestTemplate;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
@@ -38,11 +40,17 @@ public class BaseIntegrationTest {
   protected int port;
   @Autowired
   protected VideoRentalQueryExecutionListener queryExecutionListener;
+  @Autowired
+  private RestTemplateBuilder restTemplateBuilder;
 
   protected static final PostgreSQLContainer<?> POSTGRES_SQL_CONTAINER;
 
   protected String getLocalhostUrl(@NonNull final String uri) {
     return MessageFormat.format(LOCALHOST_URL, String.valueOf(port), uri);
+  }
+
+  protected RestTemplate getRestTemplate() {
+    return restTemplateBuilder.build();
   }
 
   static {
