@@ -2,12 +2,12 @@ package com.casumo.videorentalservice.business.rental.validator;
 
 import static java.util.Objects.isNull;
 
+import com.casumo.videorentalservice.common.annotation.Validator;
 import com.casumo.videorentalservice.model.request.RentMovieRq;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
+@Validator
 @RequiredArgsConstructor
 public class RentMovieRqValidatorImpl implements RentMovieRqValidator {
 
