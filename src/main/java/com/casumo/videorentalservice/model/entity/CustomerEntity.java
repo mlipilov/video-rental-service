@@ -36,8 +36,8 @@ public class CustomerEntity extends IdentifiableEntity {
   private Set<RentalEntity> rentals = new HashSet<>();
 
   public void addRental(@NonNull final RentalEntity rental) {
-    this.rentals.add(rental);
     rental.setCustomer(this);
+    this.rentals.add(rental);
   }
 
   public void payForMovieRent(@NonNull final BigDecimal price) {
