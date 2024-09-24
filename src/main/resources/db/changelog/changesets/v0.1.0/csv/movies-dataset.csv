@@ -1,21 +1,21 @@
-movie_title,movie_type
-The Matrix,NEW
-Inception,NEW
-Interstellar,REGULAR
-The Dark Knight,REGULAR
-Fight Club,OLD
-Pulp Fiction,OLD
-Forrest Gump,REGULAR
-The Godfather,OLD
-The Shawshank Redemption,REGULAR
-Star Wars,OLD
-Avatar,NEW
-Avengers: Endgame,NEW
-Titanic,REGULAR
-The Lord of the Rings,REGULAR
-Harry Potter,REGULAR
-Jurassic Park,OLD
-Terminator 2,OLD
-Goodfellas,OLD
-The Silence of the Lambs,OLD
-Back to the Future,REGULAR
+movie_title,movie_type,count
+The Matrix,NEW,3
+Inception,NEW,2
+Interstellar,REGULAR,4
+The Dark Knight,REGULAR,4
+Fight Club,OLD,10
+Pulp Fiction,OLD,10
+Forrest Gump,REGULAR,4
+The Godfather,OLD,11
+The Shawshank Redemption,REGULAR,7
+Star Wars,OLD,9
+Avatar,NEW,2
+Avengers: Endgame,NEW,1
+Titanic,REGULAR,5
+The Lord of the Rings,REGULAR,6
+Harry Potter,REGULAR,5
+Jurassic Park,OLD,10
+Terminator 2,OLD,11
+Goodfellas,OLD,13
+The Silence of the Lambs,OLD,20
+Back to the Future,REGULAR,7

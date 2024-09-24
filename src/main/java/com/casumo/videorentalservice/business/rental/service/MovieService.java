@@ -16,5 +16,5 @@ public interface MovieService {
    * @return a map where the keys are {@link MovieEntity} objects and the values are the number of
    * rental days for each movie.
    */
-  Map<MovieEntity, Integer> getMoviesToRentalDays(List<RentMovieRq> rentalRequests);
+  Map<MovieEntity, Integer> getMoviesForRental(List<RentMovieRq> rentalRequests);
 }

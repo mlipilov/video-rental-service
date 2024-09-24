@@ -48,6 +48,11 @@ databaseChangeLog:
                   type: varchar
                   constraints:
                     nullable: false
+              - column:
+                  name: count
+                  type: int
+                  constraints:
+                    nullable: false
 
   - changeSet:
       id: 0.1.0-3 created movies table

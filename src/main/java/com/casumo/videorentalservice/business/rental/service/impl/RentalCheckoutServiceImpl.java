@@ -29,6 +29,8 @@ public class RentalCheckoutServiceImpl implements RentalCheckoutService {
   ) {
     log.info("Started paying and renting movies...");
     moviesMap.forEach((movie, rentalDays) -> {
+      movie.decreaseCount();
+
       final BigDecimal rentalPrice = movieRentalPriceCalculator.calculate(movie, rentalDays);
       customer.payForMovieRent(rentalPrice);
 

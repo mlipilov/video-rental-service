@@ -1,6 +1,7 @@
 package com.casumo.videorentalservice.business.rental.service.impl;
 
 import static java.util.function.Function.identity;
+import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ZERO;
 
 import com.casumo.videorentalservice.business.rental.service.MovieService;
 import com.casumo.videorentalservice.model.entity.MovieEntity;
@@ -12,6 +13,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +26,7 @@ public class MovieServiceImpl implements MovieService {
 
   @Override
   @Transactional
-  public Map<MovieEntity, Integer> getMoviesToRentalDays(final List<RentMovieRq> rentalRequests) {
+  public Map<MovieEntity, Integer> getMoviesForRental(final List<RentMovieRq> rentalRequests) {
     log.info("Started getting movies to rental days...");
     final Map<Long, Integer> movieIdToRentalDaysMap = rentalRequests.stream()
         .collect(Collectors.toMap(
@@ -33,6 +35,12 @@ public class MovieServiceImpl implements MovieService {
     final Set<Long> movieIds = movieIdToRentalDaysMap.keySet();
 
     final List<MovieEntity> movies = movieEntityRepository.findByIdIn(movieIds);
+    final boolean isAnyUnavailable = movies.stream()
+        .anyMatch(movie -> INTEGER_ZERO.equals(movie.getCount()));
+    if (isAnyUnavailable) {
+      throw new RuntimeException("Some films you chose are not available!");
+    }
+
     return movies.stream().collect(Collectors.toMap(
         identity(),
         v -> movieIdToRentalDaysMap.get(v.getId())));

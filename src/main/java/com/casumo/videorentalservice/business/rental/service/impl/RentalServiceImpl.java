@@ -32,7 +32,7 @@ public class RentalServiceImpl implements RentalService {
     //get current customer
     final CustomerEntity customer = customerService.getCurrentCustomer();
     //get movies to rental days map
-    final Map<MovieEntity, Integer> moviesMap = movieService.getMoviesToRentalDays(rentalRequests);
+    final Map<MovieEntity, Integer> moviesMap = movieService.getMoviesForRental(rentalRequests);
     //pay and rent
     rentalCheckoutService.payAndRent(moviesMap, customer);
     //return rentals

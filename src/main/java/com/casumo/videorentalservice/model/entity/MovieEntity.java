@@ -25,6 +25,9 @@ public class MovieEntity extends IdentifiableEntity {
   @Column(name = "movie_type", nullable = false)
   private MovieType movieType;
 
+  @Column(name = "count", nullable = false)
+  private Integer count;
+
   @Override
   public final boolean equals(final Object o) {
     if (this == o) {
@@ -55,5 +58,9 @@ public class MovieEntity extends IdentifiableEntity {
     return this instanceof HibernateProxy
         ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode()
         : getClass().hashCode();
+  }
+
+  public void decreaseCount() {
+    this.count--;
   }
 }
