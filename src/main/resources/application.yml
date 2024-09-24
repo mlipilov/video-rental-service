@@ -9,3 +9,5 @@ spring:
     password: postgres
     username: postgres
     url: jdbc:postgresql://localhost:10088/video-rental
+  jpa:
+    open-in-view: false
