@@ -3,6 +3,7 @@ package com.casumo.videorentalservice.model.entity;
 import static jakarta.persistence.CascadeType.MERGE;
 import static jakarta.persistence.CascadeType.PERSIST;
 import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ZERO;
+import static org.springframework.jdbc.object.BatchSqlUpdate.DEFAULT_BATCH_SIZE;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -40,7 +41,7 @@ public class CustomerEntity extends IdentifiableEntity {
   private BigDecimal balance;
 
   @OneToMany(mappedBy = "customer", cascade = {PERSIST, MERGE})
-  @BatchSize(size = 200)
+  @BatchSize(size = DEFAULT_BATCH_SIZE)
   private Set<RentalEntity> rentals = new HashSet<>();
 
   public void addRental(@NonNull final RentalEntity rental) {
