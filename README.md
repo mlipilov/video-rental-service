@@ -67,8 +67,13 @@ This repository contains the source code for the Video Rental Service applicatio
     ```sh
     ./mvnw clean install
     ```
+   
+3. **Run the docker-compose file**
+   ```
+   /usr/local/bin/docker-compose -f ${PATH_TO_PROJECT_DIR}/video-rental-service/docker-compose.yaml -p video-rental-service up -d
+   ```
 
-3. **Run the application**:
+4. **Run the application**:
     ```sh
     ./mvnw spring-boot:run
     ```
