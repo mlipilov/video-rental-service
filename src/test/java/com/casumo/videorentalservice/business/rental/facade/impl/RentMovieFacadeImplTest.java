@@ -46,5 +46,6 @@ class RentMovieFacadeImplTest {
 
     verify(rentMovieRqValidator, times(INTEGER_ONE)).validate(anyList());
     assertNotNull(rs);
+    assertEquals(movieRentedRs, rs);
   }
 }
