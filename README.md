@@ -54,6 +54,7 @@ This repository contains the source code for the Video Rental Service applicatio
 - **Front-End Development**: Focused primarily on the backend service. Only minimalistic endpoints for testing and interaction.
 - **Advanced Security**: Basic security configurations were considered, but advanced measures such as token-based authentication were not the main focus due to the scope of the initial implementation.
 - **Observability**: Was skipped to concentrate on the business logic as the task requires.
+- **Code Quality**: SonarCloud and similar solutions were omitted to save time on development.
 
 ## How to Run
 
