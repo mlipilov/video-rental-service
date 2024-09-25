@@ -86,10 +86,12 @@ This repository contains the source code for the Video Rental Service applicatio
     - Endpoint: `PATCH /rent`
     - Request Body:
       ```json
-      {
-        "rentalDays": 1,
-        "movieId": 12
-      }
+      [
+        {
+          "rentalDays": 1,
+          "movieId": 12
+        }
+      ]
       ```
 
 2. **Return a Movie**:
