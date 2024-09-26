@@ -8,8 +8,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
 
 import com.casumo.videorentalservice.BaseIntegrationTest;
+import java.time.LocalDate;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.web.client.HttpServerErrorException.InternalServerError;
@@ -20,6 +22,7 @@ class RentMovieControllerIT extends BaseIntegrationTest {
   private static final String RENTAL_URI = "api/v1/movies/rent";
   private static final String RENTAL_RQ = "rent-movie-rq.json";
   private static final String RENTAL_RS = "movie-rented-rs.json";
+  private static final LocalDate CURRENT_DATE = LocalDate.of(2024, 9, 25);
 
   @Test
   @SneakyThrows
@@ -31,6 +34,7 @@ class RentMovieControllerIT extends BaseIntegrationTest {
     final String expected = readOutboundJson(RENTAL_RS);
 
     queryExecutionListener.initCounter();
+    Mockito.when(currentDateService.getCurrentDate()).thenReturn(CURRENT_DATE);
     final ResponseEntity<String> response = sendPatch(rt, requestUrl, rq);
 
     assertThat(response).isNotNull();

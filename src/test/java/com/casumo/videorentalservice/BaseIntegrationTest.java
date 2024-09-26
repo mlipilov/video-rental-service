@@ -5,11 +5,13 @@ import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TE
 import static org.springframework.test.context.jdbc.SqlConfig.TransactionMode.ISOLATED;
 import static org.springframework.test.context.jdbc.SqlMergeMode.MergeMode.MERGE;
 
+import com.casumo.videorentalservice.business.rental.service.impl.CurrentDateService;
 import com.casumo.videorentalservice.utils.VideoRentalQueryExecutionListener;
 import java.text.MessageFormat;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -43,6 +45,8 @@ public class BaseIntegrationTest {
   protected VideoRentalQueryExecutionListener queryExecutionListener;
   @Autowired
   private RestTemplateBuilder restTemplateBuilder;
+  @SpyBean
+  protected CurrentDateService currentDateService;
 
   protected static final PostgreSQLContainer<?> POSTGRES_SQL_CONTAINER;
 

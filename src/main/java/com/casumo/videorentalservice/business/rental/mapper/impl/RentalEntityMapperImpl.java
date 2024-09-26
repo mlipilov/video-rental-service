@@ -1,6 +1,7 @@
 package com.casumo.videorentalservice.business.rental.mapper.impl;
 
 import com.casumo.videorentalservice.business.rental.mapper.RentalEntityMapper;
+import com.casumo.videorentalservice.business.rental.service.impl.CurrentDateService;
 import com.casumo.videorentalservice.model.entity.MovieEntity;
 import com.casumo.videorentalservice.model.entity.RentalEntity;
 import com.casumo.videorentalservice.model.response.GetRentalInfoRs;
@@ -8,14 +9,17 @@ import com.casumo.videorentalservice.model.response.GetReturnInfoRs;
 import com.casumo.videorentalservice.model.response.MovieRentedRs;
 import com.casumo.videorentalservice.model.response.MovieReturnedRs;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class RentalEntityMapperImpl implements RentalEntityMapper {
+
+  private final CurrentDateService currentDateService;
 
   @Override
   public RentalEntity toRental(
@@ -24,7 +28,7 @@ public class RentalEntityMapperImpl implements RentalEntityMapper {
       final BigDecimal rentalPrice
   ) {
     final RentalEntity rental = new RentalEntity();
-    rental.setRentedAt(LocalDate.now());
+    rental.setRentedAt(currentDateService.getCurrentDate());
     rental.setRentalDays(rentalDays);
     rental.setMovie(movie);
     rental.setRentalPrice(rentalPrice);
