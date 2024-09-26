@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GeneralExceptionHandler {
 
+  /**
+   * internalServerError is used for simplicity
+   * @param ex ex
+   * @return response entity
+   */
   @ExceptionHandler(RuntimeException.class)
   ResponseEntity<ErrorRs> handleRuntimeException(final RuntimeException ex) {
     final ErrorRs errorRs = new ErrorRs();
