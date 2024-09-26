@@ -69,6 +69,6 @@ public class RentalEntity extends IdentifiableEntity {
 
   @Override
   public int hashCode() {
-    return customer.hashCode() + movie.hashCode();
+    return customer.hashCode() + movie.hashCode() + rentalDays.hashCode();
   }
 }
